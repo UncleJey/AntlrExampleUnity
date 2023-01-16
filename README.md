@@ -11,13 +11,10 @@ There are a lot of cool games out there that use coding as part of the gameplay 
 
 ## How?
 
-The first step will be to install Antlr (which is dependent on Java, so if you haven't got that installed that's probably the *actual* first step). 
+The first step will be to install Antlr. 
 
 ```
-$ cd /usr/local/lib
-$ curl -O http://www.antlr.org/download/antlr-4.5-complete.jar
-$ export CLASSPATH=".:/usr/local/lib/antlr-4.5-complete.jar:$CLASSPATH"
-$ alias antlr4='java -Xmx500M -cp "/usr/local/lib/antlr-4.5-complete.jar:$CLASSPATH" org.antlr.v4.Tool'
+pip install antlr4-tools
 ```
 
 Next, you need to grab the C# runtime from [here](http://www.antlr.org/download/antlr-csharp-runtime-4.5.1.zip), unzip it and drag and drop it into your Unity project.
@@ -34,7 +31,7 @@ WS : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
 Save it and then generate the C# source files by running the following command in your terminal:
 
 ```
-antlr4 -Dlanguage=CSharp Hello.g4
+antlr4 -Dlanguage=CSharp -visitor Hello.g4
 ```
 
 Lastly, create a new GameObject in your Unity scene, add a new script named "HelloAntlr" to it and copy & paste in the following:
